@@ -76,5 +76,5 @@ e = 3
 # N = find_N(p, q)
 # d = find_d(e, p, q)
 
-# use when given e but not p and q
+# use when given e=3 but not p and q
 # print(long_to_bytes(simpleRSA(c1, c2, c3, n1, n2, n3)))
