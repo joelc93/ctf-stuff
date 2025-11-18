@@ -72,9 +72,23 @@ n3 = 515014761219833557430525349425672185561706182269637496165872744142215778241
 # public encryption key
 e = 3
 
-# use when given p and q
-# N = find_N(p, q)
-# d = find_d(e, p, q)
+given_primes = input("Are you given primes p and q? (Y/N): ")
 
-# use when given e=3 but not p and q
-# print(long_to_bytes(simpleRSA(c1, c2, c3, n1, n2, n3)))
+if (given_primes == "Y"):
+    p = int(input("Enter prime p: "))
+    q = int(input("Enter prime q: "))
+    e = int(input("Enter public key e: "))
+    c1 = int(input("Enter encrypted message: "))
+    print("Here is the plaintext message: ", decrypt(c1, find_d(e, p, q), p * q))
+elif (given_primes == "N"):
+    print("Assuming e = 3 and given 3 ciphertexts with 3 moduli...")
+    c1 = int(input("Enter encrypted message 1: "))
+    c2 = int(input("Enter encrypted message 2: "))
+    c3 = int(input("Enter encrypted message 3: "))
+    n1 = int(input("Enter modulus of public key for message 1: "))
+    n2 = int(input("Enter modulus of public key for message 2: "))
+    n3 = int(input("Enter modulus of public key for message 3: "))
+    e = 3
+    print(long_to_bytes(simpleRSA(c1, c2, c3, n1, n2, n3)))
+else:
+    print("Sorry, this program's not good enough to decrypt this.")
